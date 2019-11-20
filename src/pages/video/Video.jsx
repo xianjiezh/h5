@@ -2,9 +2,11 @@ import React from 'react';
 import { Player } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css"; // import css
 
-const Video = ()=>{
+const Video = (props)=>{
+	const {match} = props.match.params.id;
 	return (
 		<div>
+			{match}
 			<Player
 				playsInline
 				poster="/assets/poster.png"

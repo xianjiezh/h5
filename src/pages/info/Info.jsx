@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const FormCollect = ()=>{
+const Info = ()=>{
 	return (
 		<div>
 			FormCollect
@@ -10,4 +10,4 @@ const FormCollect = ()=>{
 };
 
 
-export default FormCollect;
+export default Info;

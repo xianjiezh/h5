@@ -6,8 +6,9 @@ import {
   Route,
 } from "react-router-dom";
 import Video from './pages/video/Video';
-import Form from './pages/form/form';
-import FormCollect from './pages/formCollect/FormCollect';
+import Form from './pages/form/Form';
+import Info from './pages/info/Info';
+import VideoList from './pages/videoList/VideoList';
 
 function App() {
   return (
@@ -26,15 +27,10 @@ function App() {
         {/*</ul>*/}
         <hr />
         <Switch>
-          <Route exact path="/">
-            <Video />
-          </Route>
-          <Route path="/form">
-            <Form />
-          </Route>
-          <Route path="/formCollect">
-            <FormCollect />
-          </Route>
+          <Route exact path="/" component={VideoList}/>
+          <Route exact path="/video/:id" component={Video} />
+          <Route path="/form/:id" component={Form} />
+          <Route path="/info" component={Info} />
         </Switch>
       </div>
     </Router>
