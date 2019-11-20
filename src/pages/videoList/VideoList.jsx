@@ -2,7 +2,7 @@ import React from 'react';
 import {Button} from 'antd-mobile';
 import {withRouter} from 'react-router-dom';
 
-const Video = (props)=>{
+const VideoList = (props)=>{
 	return (
 		<div>
 			<Button onClick={()=>{props.history.push('/video/1')}}>第一期视频</Button>
@@ -14,4 +14,4 @@ const Video = (props)=>{
 };
 
 
-export default withRouter(Video);
+export default withRouter(VideoList);
