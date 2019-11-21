@@ -2,6 +2,7 @@ import React from 'react';
 import quizQuestions from '../../api/quizQuestions';
 import Quiz from '../../component/quiz/Quiz';
 import Result from '../../component/quiz/Result';
+import './style.css';
 
 class Form extends React.Component {
 	constructor(props) {
