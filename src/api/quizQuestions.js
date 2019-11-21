@@ -1,87 +1,107 @@
 var quizQuestions = [
   {
-      question: "What franchise would you rather play a game from?",
+      question: "最常见的亚健康表现是?",
       answers: [
           {
-              type: "Microsoft",
-              content: "Halo"
+              type: "11",
+              content: "尿酸高"
           },
           {
-              type: "Nintendo",
-              content: "Pokemon"
+              type: "12",
+              content: "体脂高"
           },
           {
-              type: "Sony",
-              content: "Uncharted"
+              type: "13",
+              content: "脂肪肝"
+          },
+          {
+              type: "14",
+              content: "以上都是"
           }
       ]
   },
   {
-      question: "Which console would you prefer to play with friends?",
+      question: "Burpee（波比）跳的动作要领：起身跳高，______击掌？",
       answers: [
           {
-              type: "Microsoft",
-              content: "X-Box"
+              type: "21",
+              content: "双手"
           },
           {
-              type: "Nintendo",
-              content: "Nintendo 64"
+              type: "22",
+              content: "用力"
           },
           {
-              type: "Sony",
-              content: "Playstation 1"
+              type: "23",
+              content: "头顶"
+          },
+          {
+              type: "24",
+              content: "身后",
           }
       ]
   },
   {
-      question: "Which of these racing franchises would you prefer to play a game from?",
+      question: "关于669的名称解释正确的是?",
       answers: [
           {
-              type: "Microsoft",
-              content: "Forza"
+              type: "31",
+              content: "6种动作"
           },
           {
-              type: "Nintendo",
-              content: "Mario Kart"
+              type: "32",
+              content: "每种做6组"
           },
           {
-              type: "Sony",
-              content: "Gran Turismo"
-          }
+              type: "33",
+              content: "每组做9次"
+          },
+          {
+              type: "34",
+              content: "以上都是"
+          },
       ]
   },
   {
-      question: "Which of these games do you think is best?",
+      question: "以下食物中属于低碳低脂的是?",
       answers: [
           {
-              type: "Microsoft",
-              content: "BioShock"
+              type: "41",
+              content: "可乐"
           },
           {
-              type: "Nintendo",
-              content: "The Legend of Zelda: Ocarina of Time"
+              type: "42",
+              content: "玉米"
           },
           {
-              type: "Sony",
-              content: "Final Fantasy VII"
-          }
+              type: "43",
+              content: "薯条"
+          },
+          {
+              type: "44",
+              content: "面条"
+          },
       ]
   },
   {
-      question: "What console would you prefer to own?",
+      question: "下面答案中，关于登山者的动作要领描述错误的是?",
       answers: [
           {
-              type: "Microsoft",
-              content: "X-Box One"
+              type: "51",
+              content: "手臂支撑与地面垂直"
           },
           {
-              type: "Nintendo",
-              content: "Wii U"
+              type: "52",
+              content: "身体呈一条直线"
           },
           {
-              type: "Sony",
-              content: "Playstation 4"
-          }
+              type: "53",
+              content: "双手交替支撑"
+          },
+          {
+              type: "54",
+              content: "双腿交替提膝"
+          },
       ]
   }
 ];
