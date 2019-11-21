@@ -71,21 +71,6 @@ class Form extends React.Component {
 		}));
 	}
 
-	test111 = ()=>{
-		const counter = this.state.counter - 1;
-		const questionId = this.state.questionId - 1;
-
-		this.setState({
-			counter: counter,
-			questionId: questionId,
-			question: quizQuestions[counter].question,
-			answerOptions: quizQuestions[counter].answers,
-			answer: ''
-		});
-	};
-
-
-
 	setNextQuestion() {
 		const counter = this.state.counter + 1;
 		const questionId = this.state.questionId + 1;
@@ -139,7 +124,6 @@ class Form extends React.Component {
 		return (
 			<div>
 				{this.state.result ? this.renderResult() : this.renderQuiz()}
-				<button onClick={this.test111}>-</button>
 			</div>
 		);
 	}
