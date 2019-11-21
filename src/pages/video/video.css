@@ -1,0 +1,16 @@
+.loading-pic {
+  height: 100vh;
+  width: 100vw;
+}
+.video-react-control-bar {
+  display: none!important;
+}
+
+.video-react-poster {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover!important;
+}
+.to-form {
+  border: 1px solid red;
+}
