@@ -25,7 +25,7 @@ function App() {
             {/*<Link to="/dashboard">Dashboard</Link>*/}
           {/*</li>*/}
         {/*</ul>*/}
-        <hr />
+        {/* <hr /> */}
         <Switch>
           <Route exact path="/" component={VideoList}/>
           <Route exact path="/video/:id" component={Video} />
