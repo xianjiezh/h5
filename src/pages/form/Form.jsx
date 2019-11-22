@@ -1,8 +1,9 @@
 import React from 'react';
-import quizQuestions from '../../api/quizQuestions';
+import {quizQuestions1, quizAnswer1} from '../../api/quizQuestions1';
 import Quiz from '../../component/quiz/Quiz';
 import Result from '../../component/quiz/Result';
 import './style.css';
+import { getUserAnswer } from '../../api/utils';
 
 class Form extends React.Component {
 	constructor(props) {
@@ -22,11 +23,11 @@ class Form extends React.Component {
 	}
 
 	componentDidMount() {
-		const shuffledAnswerOptions = quizQuestions.map(question =>
+		const shuffledAnswerOptions = quizQuestions1.map(question =>
 			this.shuffleArray(question.answers)
 		);
 		this.setState({
-			question: quizQuestions[0].question,
+			question: quizQuestions1[0].question,
 			answerOptions: shuffledAnswerOptions[0]
 		});
 	}
@@ -54,7 +55,7 @@ class Form extends React.Component {
 	handleAnswerSelected(event) {
 		this.setUserAnswer(event.currentTarget.value);
 
-		if (this.state.questionId < quizQuestions.length) {
+		if (this.state.questionId < quizQuestions1.length) {
 			setTimeout(() => this.setNextQuestion(), 300);
 		} else {
 			setTimeout(() => this.setResults(this.getResults()), 300);
@@ -78,8 +79,8 @@ class Form extends React.Component {
 		this.setState({
 			counter: counter,
 			questionId: questionId,
-			question: quizQuestions[counter].question,
-			answerOptions: quizQuestions[counter].answers,
+			question: quizQuestions1[counter].question,
+			answerOptions: quizQuestions1[counter].answers,
 			answer: ''
 		});
 	}
@@ -93,13 +94,30 @@ class Form extends React.Component {
 		return answersCountKeys.filter(key => answersCount[key] === maxAnswerCount);
 	}
 
-	setResults(result) {
-		if (result.length === 1) {
-			this.setState({ result: result[0] });
-		} else {
-			this.setState({ result: 'Undetermined' });
-		}
+	setResults() {
+		const answersCount = getUserAnswer(this.state.answersCount);
+
+		// 获取正确率
+		const right = this.computedRight(answersCount, quizAnswer1);
+
+		// if (result.length === 1) {
+		// 	this.setState({ result: result[0] });
+		// } else {
+		// 	this.setState({ result: 'Undetermined' });
+		// }
+		this.setState({result: right})
 	}
+
+	computedRight = (userAnswer, answer)=>{
+		const questionCount = answer.length;
+		let count = 0;
+		userAnswer.forEach((number, i)=>{
+			if(answer[i] === number){
+				count += 1;
+			}
+		});
+		return [count, questionCount]
+	};
 
 	renderQuiz() {
 		return (
@@ -108,7 +126,7 @@ class Form extends React.Component {
 				answerOptions={this.state.answerOptions}
 				questionId={this.state.questionId}
 				question={this.state.question}
-				questionTotal={quizQuestions.length}
+				questionTotal={quizQuestions1.length}
 				onAnswerSelected={this.handleAnswerSelected}
 			/>
 		);
