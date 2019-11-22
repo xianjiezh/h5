@@ -9,6 +9,7 @@ import Video from './pages/video/Video';
 import Form from './pages/form/Form';
 import Info from './pages/info/Info';
 import VideoList from './pages/videoList/VideoList';
+import PrizeWheel from './pages/prizeWheel/PrizeWheel';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/video/:id" component={Video} />
           <Route path="/form/:id" component={Form} />
           <Route path="/info" component={Info} />
+          <Route path="/prizeWheel/:id" component={PrizeWheel}/>
         </Switch>
       </div>
     </Router>
