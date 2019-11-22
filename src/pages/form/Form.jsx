@@ -96,16 +96,15 @@ class Form extends React.Component {
 
 	setResults() {
 		const answersCount = getUserAnswer(this.state.answersCount);
-
 		// 获取正确率
 		const right = this.computedRight(answersCount, quizAnswer1);
-
+		// const result = [...this.state.result]
 		// if (result.length === 1) {
 		// 	this.setState({ result: result[0] });
 		// } else {
 		// 	this.setState({ result: 'Undetermined' });
 		// }
-		this.setState({result: right})
+		this.setState({result: [...right, this.props.match.params.id]})
 	}
 
 	computedRight = (userAnswer, answer)=>{
