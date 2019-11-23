@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Player, BigPlayButton, ControlBar } from 'video-react';
 import "../../../node_modules/video-react/dist/video-react.css";
-import {Button} from 'antd-mobile';
+import {Button, Modal} from 'antd-mobile';
 import {withRouter} from 'react-router-dom';
 
 import './video.css'
+
+const alert = Modal.alert;
 
 let timer = null
 
@@ -26,6 +28,20 @@ class Video extends Component {
 		window.clearInterval(timer)
 	}
 
+	showAlert = () => {
+		this.haveShowWatchVedioOverModal = true;
+		const alertInstance = alert('信息', '视频已经看完, 请回答相应问题', [
+			{
+				text: '好的',
+				onPress: () => {
+					this.toAnswer();
+					// 是否已经看了第一次
+					localStorage.setItem('haveWatchOne', true);
+				},
+			style: 'default' },
+		]);
+	};
+
 	poolVideoState = () => {
 		// 轮询查看是否播放状态
 		timer = setInterval(() => {
@@ -39,9 +55,7 @@ class Video extends Component {
 			console.log('ended', ended)
 			console.log('this.player.getState().player', this.player.getState().player)
 			if (ended) {
-				this.toAnswer();
-				// 是否已经看了第一次
-				localStorage.setItem('haveWatchOne', true);
+				!this.haveShowWatchVedioOverModal && this.showAlert();
 			}
 		}, 1000)
 	}
