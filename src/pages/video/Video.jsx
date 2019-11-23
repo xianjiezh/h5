@@ -39,7 +39,9 @@ class Video extends Component {
 			console.log('ended', ended)
 			console.log('this.player.getState().player', this.player.getState().player)
 			if (ended) {
-				this.toAnswer()
+				this.toAnswer();
+				// 是否已经看了第一次
+				localStorage.setItem('haveWatchOne', true);
 			}
 		}, 1000)
 	}
@@ -70,16 +72,16 @@ class Video extends Component {
 					style={{ display: 'inline' }}
 					src={computedVideoUrl()}
 					isFullscreen={true}
-					
-				> 
+
+				>
 					{/* <ControlBar className="my-class" />	 */}
 					<BigPlayButton position="center" />
 				</Player>}
-				{ !this.state.hasStarted && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
+				{ localStorage.getItem('haveWatchOne') && !this.state.hasStarted && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
 			</div>
 		);
 	}
-	
+
 };
 
 export default withRouter(Video)
