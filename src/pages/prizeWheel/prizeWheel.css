@@ -1,0 +1,13 @@
+.swfcontent_container {
+  width: 90%!important;
+  height: 90%!important;
+  margin-left: auto;
+  margin-right: auto;
+}
+.swfcontent_hover {
+  background-size: 90% 90%;
+  background-position: center;
+}
+
+.swfcontent_start {
+}

@@ -1,0 +1,17 @@
+
+.info {
+  height: 100vh;
+}
+.info .am-list {
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+}
+.info .am-list-body {
+  flex-grow: 1;
+}
+
+.error {
+  color: red;
+  margin-left: 20px;
+}
