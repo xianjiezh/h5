@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition } from 'react-transition-group';
-import {Button} from 'antd-mobile';
+import {Button, Modal} from 'antd-mobile';
 import {withRouter} from 'react-router-dom';
+
+const alert = Modal.alert;
 
 function Result (props) {
 	const userRight = +props.quizResult[0];
@@ -14,11 +16,15 @@ function Result (props) {
 	};
 
 	const renderAllAnswerRight =()=>{
-		return (
-			<div>
-				<Button onClick={props.history.push(`/prizeWheel/${id}`)}>参加抽奖</Button>
-			</div>
-		)
+		const alertInstance = alert('恭喜', '您已经成功答对所有问题, 点击确定抽奖', [
+			{
+				text: '确定',
+				onPress: () => {
+					props.history.push(`/prizeWheel/${id}`);
+				},
+				style: 'default'
+			},
+		]);
 	};
 	const renderSomeAnswerRight =()=>{
 		return (
