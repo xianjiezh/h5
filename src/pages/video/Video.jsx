@@ -6,23 +6,47 @@ import {withRouter} from 'react-router-dom';
 
 import './video.css'
 
+let timer = null
+
 class Video extends Component {
 	constructor(props) {
 		super(props)
 		this.player = null
 	}
 	state = {
-		videoPlaying: true
+		videoPlaying: true,
+		hasStarted: false
+	}
+
+	componentDidMount() {
+		this.poolVideoState()
+	}
+
+	componentWillUnmount() {
+		window.clearInterval(timer)
+	}
+
+	poolVideoState = () => {
+		// 轮询查看是否播放状态
+		timer = setInterval(() => {
+			const ended = this.player.getState().player.ended
+			const hasStarted = this.player.getState().player.hasStarted
+			if (this.state.hasStarted !== hasStarted) {
+				this.setState({
+					hasStarted,
+				})
+			}
+			console.log('ended', ended)
+			console.log('this.player.getState().player', this.player.getState().player)
+			if (ended) {
+				this.toAnswer()
+			}
+		}, 1000)
 	}
 
 	toAnswer = () => {
-		const ended = this.player.getState().player.ended
-		if (!localStorage.finishedWatch) {
-			return 
-		}
-		return 
-		// const id = this.props.match.params.id
-		// this.props.history.push(`/form/${id}`)
+		const id = this.props.match.params.id
+		this.props.history.push(`/form/${id}`)
 	}
 	render() {
 		const { videoPlaying } = this.state;
@@ -31,6 +55,10 @@ class Video extends Component {
 			return `https://healenh5.oss-cn-hangzhou.aliyuncs.com/2018/pahr/index/video/bef4.mp4`;
 		};
 
+		const computedPicUrl = () => {
+			return `https://healenh5.oss-cn-hangzhou.aliyuncs.com/2019/pahrv2/index/loadImage/loadbg.jpg?v=10`
+		}
+
 		return (
 			<div className="video-wrapper">
 				{/* 加载动画 ？ */}
@@ -38,7 +66,7 @@ class Video extends Component {
 				{ videoPlaying && <Player
 					ref={(player) => {this.player = player}}
 					playsInline
-					poster="https://healenh5.oss-cn-hangzhou.aliyuncs.com/2019/pahrv2/index/loadImage/loadbg.jpg?v=10"
+					poster={computedPicUrl()}
 					style={{ display: 'inline' }}
 					src={computedVideoUrl()}
 					isFullscreen={true}
@@ -47,7 +75,7 @@ class Video extends Component {
 					{/* <ControlBar className="my-class" />	 */}
 					<BigPlayButton position="center" />
 				</Player>}
-				<span className="to-answer" onClick={this.toAnswer}>我已经看完, 现在开始答题</span>
+				{ !this.state.hasStarted && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
 			</div>
 		);
 	}
