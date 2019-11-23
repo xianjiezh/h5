@@ -25,7 +25,7 @@ class PrizeWheel extends Component {
 			this.setState({
 				prizeLevel
 			})
-			
+
 		}
 		//开发获得抽奖结果 通知flash开始播放效果 js->flash
 		function callFlashToRollo(id) {
@@ -49,7 +49,7 @@ class PrizeWheel extends Component {
 			'by':0,//圆盘的图片位置y坐标
 			'sx':-20,//开始抽奖按钮x坐标
 			'sy': 120,//开始抽奖按钮y坐标
-			'contentId' : 'swfcontent',//嵌入swf 的div层的 id 
+			'contentId' : 'swfcontent',//嵌入swf 的div层的 id
 			'onClickRollEvent' : callJsToStarto,//对应上面接口
 			'onCompleteRollEvent':callJsToCompleteo //对应上面接口
 		});
@@ -60,7 +60,6 @@ class PrizeWheel extends Component {
 		const id = props.match.params.id;
 		return (
 			<div>
-				{`PrizeWheel 抽第 ${id} 期的奖品`}
 				<div className="lottery" id="swfcontent">
 					{/* 需要一个抽奖内容的图片 */}
 					<img style={{display: 'none'}} src="http://ossweb-img.qq.com/images/js/delottery/g.png" alt="转盘" />
@@ -68,7 +67,7 @@ class PrizeWheel extends Component {
 			</div>
 		);
 		}
-	
+
 };
 
 
