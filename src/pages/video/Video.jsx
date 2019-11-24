@@ -14,7 +14,7 @@ class Video extends Component {
 	constructor(props) {
 		super(props)
 		this.player = null
-		// this.haveShowWatchVedioOverModal = false;
+		this.haveShowWatchVedioOverModal = false;
 	}
 	state = {
 		videoPlaying: true,
@@ -30,7 +30,7 @@ class Video extends Component {
 	}
 
 	showAlert = () => {
-		// this.haveShowWatchVedioOverModal = true;
+		this.haveShowWatchVedioOverModal = true;
 		const alertInstance = alert('信息', '视频已经看完, 请回答相应问题', [
 			{
 				text: '好的',
@@ -54,7 +54,7 @@ class Video extends Component {
 				})
 			}
 			if (ended) {
-				this.showAlert();
+				!this.haveShowWatchVedioOverModal && this.showAlert();
 			}
 		}, 1000)
 	}
