@@ -38,5 +38,6 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.12.2"
-  }
+  },
+  "homepage": "/build-h5/"
 }
