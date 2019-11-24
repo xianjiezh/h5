@@ -5,9 +5,11 @@
   margin-right: auto;
 }
 .swfcontent_hover {
-  background-size: 90% 90%;
-  background-position: center;
+  background-size: 90% 90%!important;
+  background-position: center!important;;
 }
 
 .swfcontent_start {
+  margin-right: auto;
+  margin-left: auto;
 }
