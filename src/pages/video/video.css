@@ -12,11 +12,11 @@
   background-size: cover!important;
 }
 .video-react-big-play-button {
-  transform: translateY(-90px)!important;
+  transform: translateY(-95px)!important;
 }
 .to-answer {
   position: absolute;
-  top: 52%;
+  top: 55%;
   display: inline-block;
   text-align: center;
   cursor: pointer;
