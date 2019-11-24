@@ -14,6 +14,7 @@ class Video extends Component {
 	constructor(props) {
 		super(props)
 		this.player = null
+		this.haveShowWatchVedioOverModal = false;
 	}
 	state = {
 		videoPlaying: true,
