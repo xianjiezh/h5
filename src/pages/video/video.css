@@ -17,10 +17,10 @@
 }
 .video-react-big-play-button {
   transform: translateY(-95px)!important;
-  position: fixed!important;
+  /* position: fixed!important;
   top: 50%!important;
   left: 50%!important;
-  transform: translateY(-50%)!important;
+  transform: translateY(-50%)!important; */
 }
 .to-answer {
   position: absolute;
