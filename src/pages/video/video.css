@@ -17,6 +17,10 @@
 }
 .video-react-big-play-button {
   transform: translateY(-95px)!important;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateXY(-50% -50%);
 }
 .to-answer {
   position: absolute;

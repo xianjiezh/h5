@@ -103,7 +103,6 @@ class Video extends Component {
           autoPlay={true}
           fluid
           width={document.body.clientWidth}
-
 				>
 					{/* <ControlBar className="my-class" />	 */}
 					<BigPlayButton position="center" />
