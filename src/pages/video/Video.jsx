@@ -55,7 +55,6 @@ class Video extends Component {
 		timer = setInterval(() => {
       const ended = this.player.getState().player.ended
       const paused = this.player.getState().player.paused
-      console.log(this.player.getState().player)
 			const hasStarted = this.player.getState().player.hasStarted
 			if (this.state.hasStarted !== hasStarted) {
 				this.setState({
@@ -102,6 +101,8 @@ class Video extends Component {
 					src={computedVideoUrl()}
           isFullscreen={true}
           autoPlay={true}
+          fluid
+          width={document.body.clientWidth}
 
 				>
 					{/* <ControlBar className="my-class" />	 */}

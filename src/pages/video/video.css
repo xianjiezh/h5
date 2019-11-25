@@ -7,19 +7,20 @@
 }
 .video-react-video {
   height: 100vh!important;
-  width: calc(100vw + 16px)!important;
-  margin-left: -8px;
+  width: calc(100vw + 32px)!important;
+  margin-left: -16px;
 }
 .video-react-poster {
   height: 100vh!important;
   width: 100vw!important;
+  background-size: cover;
 }
 .video-react-big-play-button {
   transform: translateY(-95px)!important;
 }
 .to-answer {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   display: inline-block;
   text-align: center;
   cursor: pointer;
