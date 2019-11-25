@@ -18,7 +18,8 @@ class Video extends Component {
 	}
 	state = {
 		videoPlaying: true,
-		hasStarted: false
+    hasStarted: false,
+    paused: false,
 	}
 
 	componentDidMount() {
@@ -30,29 +31,42 @@ class Video extends Component {
 	}
 
 	showAlert = () => {
-		this.haveShowWatchVedioOverModal = true;
-		const alertInstance = alert('信息', '视频已经看完, 请回答相应问题', [
-			{
-				text: '好的',
-				onPress: () => {
-					this.toAnswer();
-					// 是否已经看了第一次
-					localStorage.setItem('haveWatchOne', true);
-				},
-			style: 'default' },
-		]);
+    this.haveShowWatchVedioOverModal = true;
+    
+    this.toAnswer();
+    // 是否已经看了第一次
+    localStorage.setItem('haveWatchOne', true);
+		// const alertInstance = alert('信息', '视频已经看完, 请回答相应问题', [
+		// 	{
+		// 		text: '好的',
+		// 		onPress: () => {
+		// 		},
+		// 	style: 'default' },
+		// ]);
 	};
 
 	poolVideoState = () => {
-		// 轮询查看是否播放状态
+    // 轮询查看是否播放状态
+    // 第一次
+    const hasStarted = this.player.getState().player.hasStarted
+    this.setState({
+      hasStarted,
+    })
 		timer = setInterval(() => {
-			const ended = this.player.getState().player.ended
+      const ended = this.player.getState().player.ended
+      const paused = this.player.getState().player.paused
+      console.log(this.player.getState().player)
 			const hasStarted = this.player.getState().player.hasStarted
 			if (this.state.hasStarted !== hasStarted) {
 				this.setState({
 					hasStarted,
 				})
-			}
+      }
+      if (this.state.paused !== paused) {
+				this.setState({
+					paused,
+				})
+      }
 			if (ended) {
 				!this.haveShowWatchVedioOverModal && this.showAlert();
 			}
@@ -64,33 +78,36 @@ class Video extends Component {
 		this.props.history.push(`/form/${id}`)
 	}
 	render() {
-		const { videoPlaying } = this.state;
+
+    const id = this.props.match.params.id
+		const { videoPlaying, paused } = this.state;
 
 		const computedVideoUrl = () =>{
-			return `https://healenh5.oss-cn-hangzhou.aliyuncs.com/2018/pahr/index/video/bef4.mp4`;
+			return require(`./${id}.mp4`)
 		};
 
 		const computedPicUrl = () => {
-			return `https://healenh5.oss-cn-hangzhou.aliyuncs.com/2019/pahrv2/index/loadImage/loadbg.jpg?v=10`
+			return require(`./${id}.jpg`)
 		}
 
 		return (
 			<div className="video-wrapper">
 				{/* 加载动画 ？ */}
-				{ !videoPlaying && <img className="loading-pic" src="https://healenh5.oss-cn-hangzhou.aliyuncs.com/2019/pahrv2/index/loadImage/loadbg.jpg?v=10" alt="loading"/> }
+				{ !videoPlaying && <img className="loading-pic" src={require(`./${id}.jpeg`)} alt="loading"/> }
 				{ videoPlaying && <Player
 					ref={(player) => {this.player = player}}
 					playsInline
 					poster={computedPicUrl()}
 					style={{ display: 'inline' }}
 					src={computedVideoUrl()}
-					isFullscreen={true}
+          isFullscreen={true}
+          autoPlay={true}
 
 				>
 					{/* <ControlBar className="my-class" />	 */}
 					<BigPlayButton position="center" />
 				</Player>}
-				{ localStorage.getItem('haveWatchOne') && !this.state.hasStarted && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
+				{(!this.state.hasStarted || paused) && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
 			</div>
 		);
 	}
