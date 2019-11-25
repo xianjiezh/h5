@@ -103,7 +103,7 @@ class Video extends Component {
 					style={{ display: 'inline' }}
 					src={computedVideoUrl()}
           isFullscreen={true}
-          autoPlay={true}
+          // autoPlay={true}
           fluid
           width={document.body.clientWidth}
 				>
