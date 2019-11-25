@@ -24,9 +24,9 @@ class Video extends Component {
 
 	componentDidMount() {
     this.poolVideoState()
-    setTimeout(() => {
-      document.getElementsByTagName('video')[0].play()
-    }, 20);
+    // setTimeout(() => {
+    //   document.getElementsByTagName('video')[0].play()
+    // }, 20);
 	}
 
 	componentWillUnmount() {
@@ -103,7 +103,7 @@ class Video extends Component {
 					style={{ display: 'inline' }}
 					src={computedVideoUrl()}
           isFullscreen={true}
-          // autoPlay={true}
+          autoPlay={true}
           fluid
           width={document.body.clientWidth}
 				>
