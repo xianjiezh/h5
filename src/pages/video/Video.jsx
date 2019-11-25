@@ -108,7 +108,7 @@ class Video extends Component {
 					{/* <ControlBar className="my-class" />	 */}
 					<BigPlayButton position="center" />
 				</Player>}
-				{(!this.state.hasStarted || paused) && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
+				{(localStorage.getItem('haveWatchOne') && (!this.state.hasStarted || paused)) && <div className="to-answer"><span onClick={this.toAnswer}>我已经看完, 现在开始答题</span></div> }
 			</div>
 		);
 	}
